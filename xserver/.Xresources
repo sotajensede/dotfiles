@@ -1,0 +1,19 @@
+#include "/home/akhet/.xcolors/dkeg - colorstar"
+
+!remove scrollbar
+urxvt*scrollBar: false
+urxvt*borderless: 1
+urxvt*secondaryScroll: true
+
+!clickable urls
+urxvt*perl-ext-common: default,matcher
+urxvt*url-launcher: /usr/bin/chromium
+urxvt.matcher.button: 1
+
+!transparency
+urxvt*transparent: true
+! urxvt*shading 0 to 99 darkens, 101 to 200 lightens
+urxvt*shading: 50
+
+!font
+urxvt.font: xft:Source Code Pro:pixelsize=14

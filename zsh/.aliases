@@ -1,0 +1,7 @@
+#easy exit
+#alias x='exit'
+#now extracts
+
+#yaourt aliases
+alias pacman-ar='(pacman -Qdt) && sudo pacman -Rns $(pacman -Qdtq)'
+alias upsys='yaourt -Syua'
