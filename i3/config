@@ -167,7 +167,8 @@ bindsym $mod+shift+x exec i3lock
 bar {
         status_command i3blocks -c /home/akhet/.config/i3/i3blocks.conf
         #status_command i3status -c /home/akhet/.config/i3/i3status.conf
-        tray_output primary
+        #tray_output primary
+        #tray_padding 0
 
         colors {
             background $black_d
@@ -198,7 +199,8 @@ new_window pixel 0
 gaps inner 15
 gaps outer 5
 # startup on login
-exec --no-startup-d nm-applet
+exec /home/akhet/.fehbg
+exec --no-startup-id nm-applet
 exec --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3blocks"' --config ~/.config/compton.conf -b
 exec redshift -c /home/akhet/.redshift
 exec termite
