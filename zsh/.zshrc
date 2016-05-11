@@ -49,7 +49,7 @@ ZSH_THEME="afowler"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages colorize cp x)
+plugins=(git archlinux colored-man-pages colorize)
 
 # User configuration
 
@@ -63,7 +63,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+ export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -92,3 +92,6 @@ source $HOME/.aliases
 # Remove redundant mappings that interfere with rtorrent
 stty stop undef
 stty start undef
+
+# Link to Base16 TTY theme
+/home/akhet/.config/base16-builder/output/vconsole/base16-atelierplateau.dark.sh

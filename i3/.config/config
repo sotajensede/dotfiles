@@ -1,0 +1,182 @@
+
+# mod is os key
+set $mod Mod4
+floating_modifier $mod
+
+font pango:Source Code Sans 10
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec /home/akhet/.config/i3/rofi.sh
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# workspace variables
+set $wspace1    "I: "
+set $wspace2    "II: "
+set $wspace3    "III: "
+set $wspace4    "IV: "
+set $wspace5    "V"
+set $wspace6    "VI"
+set $wspace7    "VII"
+set $wspace8    "VIII"
+set $wspace9    "IX"
+set $wspace10   "X: "
+
+# assign programs to workspaces
+assign [class="chromium"] $wspace2
+assign [class="luakit"] $wspace2
+assign [class="qutebrowser"] $wspace2
+assign [class="Firefox"] $wspace2
+assign [class="Midori"] $wspace2
+assign [class="Thunar"] $wspace3
+assign [class="Nylas N1"] $wspace4
+assign [class="Clementine"] $wspace10
+assign [class="pithos"] $wspace10
+
+# switch to workspace
+bindsym $mod+1 workspace $wspace1
+bindsym $mod+2 workspace $wspace2
+bindsym $mod+3 workspace $wspace3
+bindsym $mod+4 workspace $wspace4
+bindsym $mod+5 workspace $wspace5
+bindsym $mod+6 workspace $wspace6
+bindsym $mod+7 workspace $wspace7
+bindsym $mod+8 workspace $wspace8
+bindsym $mod+9 workspace $wspace9
+bindsym $mod+0 workspace $wspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $wspace1
+bindsym $mod+Shift+2 move container to workspace $wspace2
+bindsym $mod+Shift+3 move container to workspace $wspace3
+bindsym $mod+Shift+4 move container to workspace $wspace4
+bindsym $mod+Shift+5 move container to workspace $wspace5
+bindsym $mod+Shift+6 move container to workspace $wspace6
+bindsym $mod+Shift+7 move container to workspace $wspace7
+bindsym $mod+Shift+8 move container to workspace $wspace8
+bindsym $mod+Shift+9 move container to workspace $wspace9
+bindsym $mod+Shift+0 move container to workspace $wspace10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -b 'Yes' 'i3-msg exit'"
+# display caps lock in i3bar
+bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+
+# media keybinds
+bindsym XF86AudioLowerVolume exec amixer set Master 5%- unmute
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ unmute
+bindsym XF86AudioMute exec amixer set Master toggle
+
+# brightness keybinds
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # back to normal: Escape
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+set $base00 #1b1818
+set $base01 #292424
+set $base02 #585050
+set $base03 #655d5d
+set $base04 #7e7777
+set $base05 #8a8585
+set $base06 #e7dfdf
+set $base07 #f4ecec
+set $base08 #ca4949
+set $base09 #b45a3c
+set $base0A #a06e3b
+set $base0B #4b8b8b
+set $base0C #5485b6
+set $base0D #7272ca
+set $base0E #8464c4
+set $base0F #bd5187
+
+client.focused $base0D $base0D $base00 $base01
+client.focused_inactive $base02 $base02 $base03 $base01
+client.unfocused $base01 $base01 $base03 $base01
+client.urgent $base02 $base08 $base07 $base08
+
+bar {
+        status_command i3blocks -c /home/akhet/.config/i3/i3blocks.conf
+    
+        colors {
+        separator $base03
+        background $base01
+        statusline $base05
+        focused_workspace $base0C $base0D $base00
+        active_workspace $base02 $base02 $base07
+        inactive_workspace $base01 $base01 $base03
+        urgent_workspace $base08 $base08 $base07
+    }
+}
+
+
+# for looks
+hide_edge_borders both
+new_window pixel 0
+gaps inner 15
+gaps outer 5
+
+# startup on login
+exec /home/akhet/.fehbg
+exec xscreensaver -no-splash
+#exec --no-startup-id nm-applet
+exec --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3blocks"' --config ~/.config/compton.conf -b
+exec redshift -c /home/akhet/.redshift
+exec termite

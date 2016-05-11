@@ -1,0 +1,2 @@
+#!/bin/sh
+feh  --bg-fill '/home/akhet/sync/img/wallppr/rainforest.jpg' 
