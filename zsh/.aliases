@@ -1,0 +1,12 @@
+# easy exit
+alias x='exit'
+
+# clear like windows
+alias cls='clear'
+
+# reset bacground for resolution change
+alias refresh-bg='/home/akhet/.fehbg'
+
+# yaourt aliases
+alias pac-autoremove='(pacman -Qdt) && sudo pacman -Rns $(pacman -Qdtq)'
+
