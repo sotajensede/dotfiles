@@ -1,0 +1,1 @@
+/home/akhet/.vimrc
